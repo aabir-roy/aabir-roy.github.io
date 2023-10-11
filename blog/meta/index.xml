@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog on Aabir Roy</title>
-    <link>/blog/</link>
-    <description>Recent content in Blog on Aabir Roy</description>
+    <title>meta on Aabir Roy</title>
+    <link>/blog/meta/</link>
+    <description>Recent content in meta on Aabir Roy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2023, Aabir Roy.</copyright>
-    <lastBuildDate>Wed, 11 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="/blog/meta/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello World</title>
       <link>/hello-world/</link>
