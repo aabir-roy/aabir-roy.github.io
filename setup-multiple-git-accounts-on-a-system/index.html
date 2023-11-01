@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="../favicon-32x32.png" />
+<title>Setup multiple git accounts on a system | Aabir Roy</title>
+<meta name="title" content="Setup multiple git accounts on a system" />
+<meta name="description" content="Git is an indispensible part of my workflow. I happen to use git for both my personal and work related projects. However, moving between these accounts can be challenging at times. In order to counter this, we can make use of a feature called conditional includes.
+Setup ssh keys To start with let&rsquo;s set up the ssh keys for each of our accounts. Check for any existing ssh keys in the ." />
+<meta name="keywords" content="git," />
+
+
+<meta property="og:title" content="Setup multiple git accounts on a system" />
+<meta property="og:description" content="Git is an indispensible part of my workflow. I happen to use git for both my personal and work related projects. However, moving between these accounts can be challenging at times. In order to counter this, we can make use of a feature called conditional includes.
+Setup ssh keys To start with let&rsquo;s set up the ssh keys for each of our accounts. Check for any existing ssh keys in the ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/setup-multiple-git-accounts-on-a-system/" /><meta property="og:image" content="/images/share.png"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2023-10-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-10-20T00:00:00+00:00" /><meta property="og:site_name" content="Aabir Roy" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/images/share.png"/>
+
+<meta name="twitter:title" content="Setup multiple git accounts on a system"/>
+<meta name="twitter:description" content="Git is an indispensible part of my workflow. I happen to use git for both my personal and work related projects. However, moving between these accounts can be challenging at times. In order to counter this, we can make use of a feature called conditional includes.
+Setup ssh keys To start with let&rsquo;s set up the ssh keys for each of our accounts. Check for any existing ssh keys in the ."/>
+
+
+
+<meta itemprop="name" content="Setup multiple git accounts on a system">
+<meta itemprop="description" content="Git is an indispensible part of my workflow. I happen to use git for both my personal and work related projects. However, moving between these accounts can be challenging at times. In order to counter this, we can make use of a feature called conditional includes.
+Setup ssh keys To start with let&rsquo;s set up the ssh keys for each of our accounts. Check for any existing ssh keys in the ."><meta itemprop="datePublished" content="2023-10-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-10-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="429"><meta itemprop="image" content="/images/share.png"/>
+<meta itemprop="keywords" content="git," />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)'],
+            ],
+        },
+        svg: {
+            fontCache: 'global',
+        },
+    };
+</script>
+<script
+    id="MathJax-script"
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head>
+
+<body>
+  <header><a href="../" class="title">
+  <h2>Aabir Roy</h2>
+</a>
+<nav><a href="../">Home</a>
+
+<a href="../about/">About</a>
+
+
+<a href="../blog">Blog</a>
+
+</nav>
+</header>
+  <main>
+
+<h1>Setup multiple git accounts on a system</h1>
+<p>
+  <i>
+    <time datetime='2023-10-20' pubdate>
+      2023-10-20
+    </time>
+  </i>
+</p>
+
+<content>
+  <p>Git is an indispensible part of my workflow. I happen to use git for both my personal and work related projects. However, moving between these accounts can be challenging at times. In order to counter this, we can make use of a feature called <a href="https://git-scm.com/docs/git-config#_conditional_includes">conditional includes</a>.</p>
+<h2 id="setup-ssh-keys">Setup ssh keys</h2>
+<p>To start with let&rsquo;s set up the ssh keys for each of our accounts. Check for any existing ssh keys in the <code>.ssh</code> directory, and remove them if not in use.</p>
+<ul>
+<li>Generate the keys using ssh-keygen</li>
+</ul>
+<pre tabindex="0"><code>$ ssh-keygen -t ed25519 -C &#34;you@example.com&#34;
+</code></pre><p>This will create two files in your .ssh directory, a private and a public (differentiated with a .pub extension) key. Repeat this step for the second key.</p>
+<ul>
+<li>Add them to your ssh-agent using ssh-add</li>
+</ul>
+<pre tabindex="0"><code>$ ssh-add ~/.ssh/id_ed25519_personal
+$ ssh-add ~/.ssh/id_ed25519_work
+</code></pre><p>Make sure you are adding the private key and not the public key.</p>
+<ul>
+<li>Add these keys to your Github/Gitlab accounts.</li>
+</ul>
+<p>Navigate to the SSH keys section in your Github/Gitlab accounts and then add your respective SSH keys. Note, copy the contents of the file ending with .pub as this is your public key. Your private key never leaves your computer.</p>
+<h2 id="creating-the-ssh-config-file">Creating the ssh config file.</h2>
+<p>Navigate to the .ssh/config file and edit the file similar to below.</p>
+<pre tabindex="0"><code>$ cat .ssh/config
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_personal
+ 
+Host work.github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_work
+</code></pre><p>Ensure you are consistent with the <code>Host</code> notation, because it will be important later on.</p>
+<h2 id="setting-up-the-git-config">Setting up the git config</h2>
+<p>Go to your git config file and add the following</p>
+<pre tabindex="0"><code>$ cat .gitconfig 
+[user]
+        name = you
+        email = you@example.com
+
+[includeIf &#34;gitdir:~/work/&#34;]
+        path = ~/work/.gitconfig-work
+</code></pre><p>And in <code>~/work/.gitconfig-work</code> add the following</p>
+<pre tabindex="0"><code>[user]
+        name = you
+        email = you@work.com
+</code></pre><h2 id="using-this-setup">Using this setup</h2>
+<p>Any git directory outside <code>~/work</code> will default to your personal user. You can check the user of your work directories using <code>git config user.email</code> in any git directory under <code>~/work</code>. It should output your work email.</p>
+<p>You can clone a directory using:</p>
+<pre tabindex="0"><code>git clone git@github.com:personal/repo.git
+</code></pre><p>However, for a <code>~/work</code> directory, use:</p>
+<pre tabindex="0"><code>git clone git@work.github.com:work/repo.git
+</code></pre><p>Note, that we use the string we defined as <code>Host</code> in the <code>.ssh/config</code> file between <code>@</code> and <code>:</code>. Now, any directory that comes under <code>~/work</code> will use your work credentials.</p>
+<p>We perform a similar exercise when creating a new repository on the local machine. Initialize your local directory using <code>git init</code>. Create the repository on your Github/Gitlab account and then add as a git remote for the local repository.</p>
+<pre tabindex="0"><code>git remote add origin git@work.github.com:work/repo.git
+</code></pre><p>Now you should be able to easily switch between your different git accounts.</p>
+
+</content>
+<p>
+  
+  <a href="../blog/git/">#git</a>
+  
+</p>
+
+  </main>
+  <footer>
+</footer>
+
+    
+</body>
+
+</html>

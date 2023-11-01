@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog on Aabir Roy</title>
-    <link>/blog/</link>
-    <description>Recent content in Blog on Aabir Roy</description>
+    <title>git on Aabir Roy</title>
+    <link>/blog/git/</link>
+    <description>Recent content in git on Aabir Roy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2023, Aabir Roy.</copyright>
-    <lastBuildDate>Fri, 20 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="/blog/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setup multiple git accounts on a system</title>
       <link>/setup-multiple-git-accounts-on-a-system/</link>
@@ -16,18 +16,6 @@
       <guid>/setup-multiple-git-accounts-on-a-system/</guid>
       <description>Git is an indispensible part of my workflow. I happen to use git for both my personal and work related projects. However, moving between these accounts can be challenging at times. In order to counter this, we can make use of a feature called conditional includes.
 Setup ssh keys To start with let&amp;rsquo;s set up the ssh keys for each of our accounts. Check for any existing ssh keys in the .</description>
-    </item>
-    
-    <item>
-      <title>Hello World</title>
-      <link>/hello-world/</link>
-      <pubDate>Wed, 11 Oct 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/hello-world/</guid>
-      <description>Hi there,
-I recently turned 21, and decided to start a blog. I will be updating it, sharing insights into my current work and experiences.
-I hope to learn to better communicate my thoughts and ideas and effectively convey them to an audience.
-Thanks for stopping by!</description>
     </item>
     
   </channel>
