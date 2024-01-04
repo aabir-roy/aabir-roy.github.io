@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>radio astronomy on Aabir Roy</title>
+    <link>/blog/radio-astronomy/</link>
+    <description>Recent content in radio astronomy on Aabir Roy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Copyright © 2023, Aabir Roy.</copyright>
+    <lastBuildDate>Wed, 03 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="/blog/radio-astronomy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sky Watch Array Network (SWAN)</title>
+      <link>/sky-watch-array-network-swan/</link>
+      <pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/sky-watch-array-network-swan/</guid>
+      <description>The brainchild of Dr. Avinash Despande, the Indian Sky Watch Array Network aims to set up a group of radio telescopes across institutes in India, with the long-term goal of having a country wide radio interferometer which will help in the imaging of FRBs, pulsars and other astronomical sources.
+It will significantly enchance Indian observing capabilities in the radio frequencies and also establish a sustainable approach to cultivate and support upcoming generations of skilled radio astronomers in India, enabling them to tackle challenges and spearhead compelling research in the field of radio astronomy.</description>
+    </item>
+    
+  </channel>
+</rss>
