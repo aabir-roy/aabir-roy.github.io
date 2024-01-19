@@ -260,7 +260,7 @@ Setup ssh keys To start with let&rsquo;s set up the ssh keys for each of our acc
 <ul>
 <li>Generate the keys using ssh-keygen</li>
 </ul>
-<pre tabindex="0"><code>$ ssh-keygen -t ed25519 -C &#34;you@example.com&#34;
+<pre tabindex="0"><code>$ ssh-keygen -t ed25519 -C &quot;you@example.com&quot;
 </code></pre><p>This will create two files in your .ssh directory, a private and a public (differentiated with a .pub extension) key. Repeat this step for the second key.</p>
 <ul>
 <li>Add them to your ssh-agent using ssh-add</li>
@@ -292,7 +292,7 @@ Host work.github.com
         name = you
         email = you@example.com
 
-[includeIf &#34;gitdir:~/work/&#34;]
+[includeIf &quot;gitdir:~/work/&quot;]
         path = ~/work/.gitconfig-work
 </code></pre><p>And in <code>~/work/.gitconfig-work</code> add the following</p>
 <pre tabindex="0"><code>[user]
