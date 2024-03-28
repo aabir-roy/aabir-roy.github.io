@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2023, Aabir Roy.</copyright>
-    <lastBuildDate>Wed, 03 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First setup of the SWAN system</title>
+      <link>/first-setup-of-the-swan-system/</link>
+      <pubDate>Tue, 26 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/first-setup-of-the-swan-system/</guid>
+      <description>After a hectic midsem week, The Radio Astronomy Club, BITS Pilani decided to open up the SWAN system and start setup. We scheduled a meet with the IIT Kanpur SWAN team, and they guided us through the process.
+To power on a system you require, well, power. However, a small but not so insignificant problem stood in our path - we couldn&amp;rsquo;t find the main power plug for the receiver system!</description>
+    </item>
+    
     <item>
       <title>Sky Watch Array Network (SWAN)</title>
       <link>/sky-watch-array-network-swan/</link>
