@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>RF on Aabir Roy</title>
-    <link>https://example.com/blog/rf/</link>
+    <link>https://aabir-roy.github.io/blog/rf/</link>
     <description>Recent content in RF on Aabir Roy</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <copyright>Copyright © 2025, Aabir Roy.</copyright>
     <lastBuildDate>Tue, 26 Mar 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://example.com/blog/rf/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://aabir-roy.github.io/blog/rf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>First setup of the SWAN system</title>
-      <link>https://example.com/first-setup-of-the-swan-system/</link>
+      <link>https://aabir-roy.github.io/first-setup-of-the-swan-system/</link>
       <pubDate>Tue, 26 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://example.com/first-setup-of-the-swan-system/</guid>
+      <guid>https://aabir-roy.github.io/first-setup-of-the-swan-system/</guid>
       <description>&lt;p&gt;After a hectic midsem week, The Radio Astronomy Club, BITS Pilani decided to open up the SWAN system and start setup. We scheduled a meet with the IIT Kanpur SWAN team, and they guided us through the process.&lt;/p&gt;&#xA;&lt;p&gt;To power on a system you require, well, power. However, a small but not so insignificant problem stood in our path - we couldn’t find the main power plug for the receiver system! The search for this elusive plug led to us unscrewing the bottom-most panel where we found the cable coiled up under the receiver, explaining our inability to locate it. We connected it to a 230V supply and switched on the circuit breakers to check for power in the extension board.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Sky Watch Array Network (SWAN)</title>
-      <link>https://example.com/sky-watch-array-network-swan/</link>
+      <link>https://aabir-roy.github.io/sky-watch-array-network-swan/</link>
       <pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>https://example.com/sky-watch-array-network-swan/</guid>
+      <guid>https://aabir-roy.github.io/sky-watch-array-network-swan/</guid>
       <description>&lt;p&gt;The brainchild of Dr. Avinash Despande, the Indian Sky Watch Array Network aims to set up a group of radio telescopes across institutes in India, with the long-term goal of having a country wide radio interferometer which will help in the imaging of FRBs, pulsars and other astronomical sources.&lt;/p&gt;&#xA;&lt;p&gt;It will significantly enchance Indian observing capabilities in the radio frequencies and also establish a sustainable approach to cultivate and support upcoming generations of skilled radio astronomers in India, enabling them to tackle challenges and spearhead compelling research in the field of radio astronomy.&lt;/p&gt;</description>
     </item>
   </channel>

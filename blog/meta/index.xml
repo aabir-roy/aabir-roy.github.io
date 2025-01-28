@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Meta on Aabir Roy</title>
-    <link>https://example.com/blog/meta/</link>
+    <link>https://aabir-roy.github.io/blog/meta/</link>
     <description>Recent content in Meta on Aabir Roy</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <copyright>Copyright © 2025, Aabir Roy.</copyright>
     <lastBuildDate>Wed, 11 Oct 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://example.com/blog/meta/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://aabir-roy.github.io/blog/meta/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello World</title>
-      <link>https://example.com/hello-world/</link>
+      <link>https://aabir-roy.github.io/hello-world/</link>
       <pubDate>Wed, 11 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://example.com/hello-world/</guid>
+      <guid>https://aabir-roy.github.io/hello-world/</guid>
       <description>&lt;p&gt;Hi there,&lt;/p&gt;&#xA;&lt;p&gt;I recently turned 21, and decided to start a blog. I will be updating it, sharing insights into my current work and experiences.&lt;/p&gt;&#xA;&lt;p&gt;I hope to learn to better communicate my thoughts and ideas and effectively convey them to an audience.&lt;/p&gt;&#xA;&lt;p&gt;Thanks for stopping by!&lt;/p&gt;</description>
     </item>
   </channel>

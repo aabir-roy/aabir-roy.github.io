@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on Aabir Roy</title>
-    <link>https://example.com/blog/git/</link>
+    <link>https://aabir-roy.github.io/blog/git/</link>
     <description>Recent content in Git on Aabir Roy</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <copyright>Copyright © 2025, Aabir Roy.</copyright>
     <lastBuildDate>Fri, 20 Oct 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://example.com/blog/git/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://aabir-roy.github.io/blog/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setup Multiple Git Accounts</title>
-      <link>https://example.com/setup-multiple-git-accounts/</link>
+      <link>https://aabir-roy.github.io/setup-multiple-git-accounts/</link>
       <pubDate>Fri, 20 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://example.com/setup-multiple-git-accounts/</guid>
+      <guid>https://aabir-roy.github.io/setup-multiple-git-accounts/</guid>
       <description>&lt;p&gt;Git is an indispensible part of my workflow. I happen to use git for both my personal and work related projects. However, moving between these accounts can be challenging at times. In order to counter this, we can make use of a feature called &lt;a href=&#34;https://git-scm.com/docs/git-config#_conditional_includes&#34;&gt;conditional includes&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;setup-ssh-keys&#34;&gt;Setup ssh keys&lt;/h2&gt;&#xA;&lt;p&gt;To start with let’s set up the ssh keys for each of our accounts. Check for any existing ssh keys in the &lt;code&gt;.ssh&lt;/code&gt; directory, and remove them if not in use.&lt;/p&gt;</description>
     </item>
   </channel>

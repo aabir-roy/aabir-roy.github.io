@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Raspberry Pi on Aabir Roy</title>
-    <link>https://example.com/blog/raspberry-pi/</link>
+    <link>https://aabir-roy.github.io/blog/raspberry-pi/</link>
     <description>Recent content in Raspberry Pi on Aabir Roy</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <copyright>Copyright © 2025, Aabir Roy.</copyright>
     <lastBuildDate>Wed, 22 Jan 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://example.com/blog/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://aabir-roy.github.io/blog/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cross-compiling the Raspberry Pi Linux kernel with the PREEMPT_RT patch</title>
-      <link>https://example.com/cross-compiling-the-raspberry-pi-linux-kernel-with-the-preempt_rt-patch/</link>
+      <link>https://aabir-roy.github.io/cross-compiling-the-raspberry-pi-linux-kernel-with-the-preempt_rt-patch/</link>
       <pubDate>Wed, 22 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.com/cross-compiling-the-raspberry-pi-linux-kernel-with-the-preempt_rt-patch/</guid>
+      <guid>https://aabir-roy.github.io/cross-compiling-the-raspberry-pi-linux-kernel-with-the-preempt_rt-patch/</guid>
       <description>&lt;p&gt;Compiling the Linux kernel on a Raspberry Pi is slow. This isn&amp;rsquo;t surprising considering the Raspberry Pi is more meant to run custom kernels, rather than build them. A better approach would be to cross-compile the kernel on a more powerful x86 machine and then transfer it to the Pi. This saves a lot of time, time that you can spend actually using the Pi for your projects, instead of waiting for the kernel to build.&lt;/p&gt;</description>
     </item>
   </channel>
