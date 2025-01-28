@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://example.com/images/favicon.png" />
+<title>Cross-compiling the Raspberry Pi Linux kernel with the PREEMPT_RT patch | Aabir Roy</title>
+<meta name="title" content="Cross-compiling the Raspberry Pi Linux kernel with the PREEMPT_RT patch" />
+<meta name="description" content="Compiling the Linux kernel on a Raspberry Pi is slow. This isn&rsquo;t surprising considering the Raspberry Pi is more meant to run custom kernels, rather than build them. A better approach would be to cross-compile the kernel on a more powerful x86 machine and then transfer it to the Pi. This saves a lot of time, time that you can spend actually using the Pi for your projects, instead of waiting for the kernel to build." />
+<meta name="keywords" content="raspberry pi,linux,kernel," />
+
+
+<meta property="og:url" content="https://example.com/cross-compiling-the-raspberry-pi-linux-kernel-with-the-preempt_rt-patch/">
+  <meta property="og:site_name" content="Aabir Roy">
+  <meta property="og:title" content="Cross-compiling the Raspberry Pi Linux kernel with the PREEMPT_RT patch">
+  <meta property="og:description" content="Compiling the Linux kernel on a Raspberry Pi is slow. This isn’t surprising considering the Raspberry Pi is more meant to run custom kernels, rather than build them. A better approach would be to cross-compile the kernel on a more powerful x86 machine and then transfer it to the Pi. This saves a lot of time, time that you can spend actually using the Pi for your projects, instead of waiting for the kernel to build.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-01-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-01-22T00:00:00+00:00">
+    <meta property="article:tag" content="Raspberry Pi">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Kernel">
+    <meta property="og:image" content="https://example.com/images/share.png">
+
+
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://example.com/images/share.png">
+  <meta name="twitter:title" content="Cross-compiling the Raspberry Pi Linux kernel with the PREEMPT_RT patch">
+  <meta name="twitter:description" content="Compiling the Linux kernel on a Raspberry Pi is slow. This isn’t surprising considering the Raspberry Pi is more meant to run custom kernels, rather than build them. A better approach would be to cross-compile the kernel on a more powerful x86 machine and then transfer it to the Pi. This saves a lot of time, time that you can spend actually using the Pi for your projects, instead of waiting for the kernel to build.">
+
+
+
+
+  <meta itemprop="name" content="Cross-compiling the Raspberry Pi Linux kernel with the PREEMPT_RT patch">
+  <meta itemprop="description" content="Compiling the Linux kernel on a Raspberry Pi is slow. This isn’t surprising considering the Raspberry Pi is more meant to run custom kernels, rather than build them. A better approach would be to cross-compile the kernel on a more powerful x86 machine and then transfer it to the Pi. This saves a lot of time, time that you can spend actually using the Pi for your projects, instead of waiting for the kernel to build.">
+  <meta itemprop="datePublished" content="2025-01-22T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-01-22T00:00:00+00:00">
+  <meta itemprop="wordCount" content="749">
+  <meta itemprop="image" content="https://example.com/images/share.png">
+  <meta itemprop="keywords" content="Raspberry Pi,Linux,Kernel">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  :root {
+      --width: 800px;
+      --font-main: Verdana, sans-serif;
+      --font-secondary: Verdana, sans-serif;
+      --font-scale: 1em;
+      --background-color: #fff;
+      --heading-color: #222;
+      --text-color: #444;
+      --link-color: #3273dc;
+      --visited-color:  #8b6fcb;
+      --code-background-color: #f2f2f2;
+      --code-color: #222;
+      --blockquote-color: #222;
+  }
+
+  @media (prefers-color-scheme: dark) {
+      :root {
+          --background-color: #333;
+          --heading-color: #eee;
+          --text-color: #ddd;
+          --link-color: #8cc2dd;
+          --visited-color:  #8b6fcb;
+          --code-background-color: #777;
+          --code-color: #ddd;
+          --blockquote-color: #ccc;
+      }
+  }
+
+  body {
+      font-family: var(--font-secondary);
+      font-size: var(--font-scale);
+      margin: auto;
+      padding: 20px;
+      max-width: var(--width);
+      text-align: left;
+      background-color: var(--background-color);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      line-height: 1.5;
+      color: var(--text-color);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-main);
+      color: var(--heading-color);
+  }
+
+  a {
+      color: var(--link-color);
+      cursor: pointer;
+      text-decoration: none;
+  }
+
+  a:hover {
+      text-decoration: underline; 
+  }
+
+  nav a {
+      margin-right: 8px;
+  }
+
+  strong, b {
+      color: var(--heading-color);
+  }
+
+  button {
+      margin: 0;
+      cursor: pointer;
+  }
+
+  main {
+      line-height: 1.6;
+  }
+
+  table {
+      width: 100%;
+  }
+
+  hr {
+      border: 0;
+      border-top: 1px dashed;
+  }
+
+  img {
+      max-width: 100%;
+  }
+
+  code {
+      font-family: monospace;
+      padding: 2px;
+      background-color: var(--code-background-color);
+      color: var(--code-color);
+      border-radius: 3px;
+  }
+
+  blockquote {
+      border-left: 1px solid #999;
+      color: var(--code-color);
+      padding-left: 20px;
+      font-style: italic;
+  }
+
+  footer {
+      padding: 25px 0;
+      text-align: center;
+  }
+
+  .title:hover {
+      text-decoration: none;
+  }
+
+  .title h1 {
+      font-size: 1.5em;
+  }
+
+  .inline {
+      width: auto !important;
+  }
+
+  .highlight, .code {
+      padding: 1px 15px;
+      background-color: var(--code-background-color);
+      color: var(--code-color);
+      border-radius: 3px;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      overflow-x: auto;
+  }
+
+   
+  ul.blog-posts {
+      list-style-type: none;
+      padding: unset;
+  }
+
+  ul.blog-posts li {
+      display: flex;
+  }
+
+  ul.blog-posts li span {
+      flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+      color: var(--visited-color);
+  }
+</style>
+
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>Aabir Roy</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/about/">About</a>
+
+
+<a href="/blog">Blog</a>
+
+</nav>
+</header>
+  <main>
+
+<h1>Cross-compiling the Raspberry Pi Linux kernel with the PREEMPT_RT patch</h1>
+<p>
+  <i>
+    <time datetime='2025-01-22'>
+      2025-01-22
+    </time>
+  </i>
+</p>
+
+<content>
+  <p>Compiling the Linux kernel on a Raspberry Pi is slow. This isn&rsquo;t surprising considering the Raspberry Pi is more meant to run custom kernels, rather than build them. A better approach would be to cross-compile the kernel on a more powerful x86 machine and then transfer it to the Pi. This saves a lot of time, time that you can spend actually using the Pi for your projects, instead of waiting for the kernel to build.</p>
+<p>My host machine in this case is a Thinkpad T480 with a i7-8650U running Ubuntu 22.04.5 LTS. The kernel takes around 30 minutes to compile on this machine (as opposed to ~forever on the RPi). My target is the Raspberry Pi CM4 also running also Ubuntu 22.04 LTS.</p>
+<h2 id="setting-up-the-build-environment">Setting up the build environment</h2>
+<p>Firstly install the build dependencies.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install build-essential libgmp-dev libmpfr-dev libmpc-dev libisl-dev libncurses5-dev bc git-core bison flex texinfo libssl-dev make gcc-aarch64-linux-gnu binutils
+</span></span></code></pre></div><p>This installs the required build dependencies as well as the cross compiler. Now download the kernel from Raspberry Pi&rsquo;s Github.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/raspberrypi/linux.git
+</span></span></code></pre></div><p>This is a pretty large download ~4GB.</p>
+<p>In order to patch the kernel we need to ensure that our kernel versions match. If raspberrypi/linux has a merge commit for linux 6.6.35, there should be an existing rt patch set for 6.6.35.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt/6.6/older/patch-6.6.35-rt34.patch.xz
+</span></span><span style="display:flex;"><span>cd linux
+</span></span><span style="display:flex;"><span>git checkout -b rpi-6.6.35-rt  5263478665260ec207b8ee4751401c1d4a6a514a
+</span></span></code></pre></div><p>Now apply the patch</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>xzcat ../patch-6.6.35-rt34.patch.xz | patch -p1
+</span></span></code></pre></div><h2 id="configuring-and-compiling-the-kernel">Configuring and Compiling the kernel</h2>
+<p>Before the configuring the kernel, we need to export a few environment variables, so that the compilation is successful.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export ARCH<span style="color:#f92672">=</span>arm64
+</span></span><span style="display:flex;"><span>export KERNEL<span style="color:#f92672">=</span>kernel8
+</span></span><span style="display:flex;"><span>export CROSS_COMPILE<span style="color:#f92672">=</span>aarch64-linux-gnu-
+</span></span></code></pre></div><p>Generate the default configuration using</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make bcm2711_defconfig
+</span></span></code></pre></div><p>Then</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make menuconfig
+</span></span></code></pre></div><p>This opens up a ncurses menu from where we can configure our kernel before compilation.</p>
+<ul>
+<li>Go to <em>General -&gt; Preemption Model</em> and select <em>Fully Preemptible Kernel (Real-Time)</em>
+<img src="/images/preemption-model.png" alt="preemption model"></li>
+<li>I set <em>Kernel Features -&gt; Timer frequency</em> to 1000 HZ
+<img src="/images/timer-freq.png" alt="timer freq"></li>
+<li><em>CPU Power Management -&gt; CPU Frequency Scaling -&gt; Default CPUFreq governor</em> to &ldquo;performance&rdquo;
+<img src="/images/cpufreq-governor.png" alt="cpufreq"></li>
+<li>I disabled <em>Virtualization</em>
+Finally save this as .config and exit. We can now go ahead and compile the kernel.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make j8 Image modules dtbs
+</span></span></code></pre></div><p>To easily share this, I made a <code>.deb</code> package using</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make -j8 bindeb-pkg
+</span></span></code></pre></div><p>This gives us the following <code>.deb</code> files.</p>
+<ul>
+<li>linux-headers-6.6.35-rt34-v8+_6.6.35-g526347866526-2_arm64.deb</li>
+<li>linux-image-6.6.35-rt34-v8+_6.6.35-g526347866526-2_arm64.deb</li>
+<li>linux-libc-dev_6.6.35-g526347866526-2_arm64.deb</li>
+</ul>
+<h2 id="installation-to-raspberry-pi-target">Installation to Raspberry Pi target</h2>
+<p>Copy over the <code>.deb</code> files to the Raspberry Pi target. In my case it&rsquo;s a RPi CM4. I have an ssh connection, so I will use the <code>scp</code> command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>scp linux-image-6.6.35-rt34-v8+_6.6.35-g526347866526-2_arm64.deb user@raspberrypi:/tmp/
+</span></span></code></pre></div><p>Make sure the <code>.deb</code> file is in a location that can be accessed by <code>apt</code>. Now install the kernel.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo su
+</span></span><span style="display:flex;"><span>apt install /tmp/linux-image-6.6.35-rt34-v8+_6.6.35-g526347866526-2_arm64.deb
+</span></span></code></pre></div><p>Now run the following block</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>KERN<span style="color:#f92672">=</span>6.6.35-rt34-v8+ <span style="color:#75715e">#put your kernel version, here 6.6.35-rt34-v8+</span>
+</span></span><span style="display:flex;"><span>mkdir -p /boot/firmware/$KERN/overlays/
+</span></span><span style="display:flex;"><span>cp -d /usr/lib/linux-image-$KERN/overlays/* /boot/firmware/$KERN/overlays/
+</span></span><span style="display:flex;"><span>cp -dr /usr/lib/linux-image-$KERN/* /boot/firmware/$KERN/
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[[</span> -d /usr/lib/linux-image-$KERN/broadcom <span style="color:#f92672">]]</span> <span style="color:#f92672">&amp;&amp;</span> cp -d /usr/lib/linux-image-$KERN/broadcom/* /boot/firmware/$KERN/
+</span></span><span style="display:flex;"><span>touch /boot/firmware/$KERN/overlays/README
+</span></span><span style="display:flex;"><span>cp /boot/vmlinuz-$KERN /boot/firmware/$KERN/
+</span></span><span style="display:flex;"><span>cp /boot/System.map-$KERN /boot/firmware/$KERN/
+</span></span><span style="display:flex;"><span>cp /boot/config-$KERN /boot/firmware/$KERN/
+</span></span><span style="display:flex;"><span>cp /boot/initrd.img-$KERN /boot/firmware/$KERN/
+</span></span><span style="display:flex;"><span>cp /boot/firmware/config.txt<span style="color:#f92672">{</span>,.bak<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>cp /boot/cmdline.txt /boot/firmware/$KERN/
+</span></span><span style="display:flex;"><span>cat &gt; /boot/firmware/config.txt <span style="color:#e6db74">&lt;&lt; EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[pi4]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">max_framebuffers=2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[all]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">cmdline=cmdline.txt
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># Enable the audio output, I2C and SPI interfaces on the GPIO header
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">dtparam=audio=on
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">dtparam=i2c_arm=on
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">dtparam=spi=on
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># Enable the serial pins
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">enable_uart=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># Comment out the following line if the edges of the desktop appear outside
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># the edges of your display
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">disable_overscan=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># If you have issues with audio, you may try uncommenting the following line
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># which forces the HDMI output into HDMI mode instead of DVI (which doesn&#39;t
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># support audio output)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#hdmi_drive=2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># If you have a CM4, uncomment the following line to enable the USB2 outputs
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># on the IO board (assuming your CM4 is plugged into such a board)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#dtoverlay=dwc2,dr_mode=host
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[all]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">kernel=vmlinuz-$KERN
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">initramfs initrd.img-$KERN
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">os_prefix=$KERN/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">overlay_prefix=overlays/$(if [[ &#34;$KERN&#34; =~ &#39;v8&#39; ]]; then echo -e &#34;\narm_64bit=1&#34;; fi)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[all]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><p>If there is a complaint about not finding a <code>cmdline.txt</code> file run the following to populate said file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;console=serial0,115200 dwc_otg.lpm_enable=0 console=tty1 isolcpus=1-2 sched_rt_runtime=-1  root=LABEL=writable rootfstype=ext4 rootwait fixrtc quiet splash&#34;</span> &gt;&gt; /boot/firmware/cmdline.txt
+</span></span></code></pre></div><p>Now reboot.
+You should be able to check the kernel version by running <code>uname -r</code>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Hence, cross-compiling the Raspberry Pi Linux kernel with the PREEMPT_RT patch opens up a realm of possibilities for developers aiming to enhance real-time performance on their Raspberry Pi systems.</p>
+<h2 id="notes">Notes</h2>
+<p>Linux 6.12 has the PREEMPT_RT patch merged. This is enabled for ARM64, RISCV as well as x86. This enables the ability to configure and compile the kernel natively without having to patch it. Interestingly enough, the main blocker was the printk function used to log messages from the kernel to the console or system logs.</p>
+
+</content>
+<p>
+  
+  <a href="https://example.com/blog/raspberry-pi/">#Raspberry Pi</a>
+  
+  <a href="https://example.com/blog/linux/">#Linux</a>
+  
+  <a href="https://example.com/blog/kernel/">#Kernel</a>
+  
+</p>
+
+  </main>
+  <footer>Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+</footer>
+
+    
+</body>
+
+</html>

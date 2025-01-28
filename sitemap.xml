@@ -2,42 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/</loc>
-    <lastmod>2024-03-26T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://example.com/about/</loc>
+    <lastmod>2025-01-28T14:44:36+05:30</lastmod>
   </url><url>
-    <loc>/blog/</loc>
+    <loc>https://example.com/</loc>
+    <lastmod>2025-01-28T14:38:10+05:30</lastmod>
+  </url><url>
+    <loc>https://example.com/blog/</loc>
+    <lastmod>2025-01-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/cross-compiling-the-raspberry-pi-linux-kernel-with-the-preempt_rt-patch/</loc>
+    <lastmod>2025-01-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/blog/kernel/</loc>
+    <lastmod>2025-01-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/blog/linux/</loc>
+    <lastmod>2025-01-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/blog/raspberry-pi/</loc>
+    <lastmod>2025-01-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/first-setup-of-the-swan-system/</loc>
     <lastmod>2024-03-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/first-setup-of-the-swan-system/</loc>
+    <loc>https://example.com/blog/radio-astronomy/</loc>
     <lastmod>2024-03-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/blog/radio-astronomy/</loc>
+    <loc>https://example.com/blog/rf/</loc>
     <lastmod>2024-03-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/blog/rf/</loc>
+    <loc>https://example.com/blog/swan/</loc>
     <lastmod>2024-03-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/blog/swan/</loc>
-    <lastmod>2024-03-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/sky-watch-array-network-swan/</loc>
+    <loc>https://example.com/sky-watch-array-network-swan/</loc>
     <lastmod>2024-01-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/blog/git/</loc>
+    <loc>https://example.com/blog/git/</loc>
     <lastmod>2023-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/setup-multiple-git-accounts-on-a-system/</loc>
+    <loc>https://example.com/setup-multiple-git-accounts/</loc>
     <lastmod>2023-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/hello-world/</loc>
+    <loc>https://example.com/hello-world/</loc>
     <lastmod>2023-10-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/blog/meta/</loc>
+    <loc>https://example.com/blog/meta/</loc>
     <lastmod>2023-10-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/about/</loc>
-  </url><url>
-    <loc>/contact/</loc>
   </url>
 </urlset>
