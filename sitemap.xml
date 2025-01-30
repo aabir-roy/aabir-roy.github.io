@@ -14,10 +14,6 @@
         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-        <loc>https://aabir-roy.github.io/blog/example/</loc>
-        <lastmod>2022-01-01</lastmod>
-    </url>
-    <url>
         <loc>https://aabir-roy.github.io/blog/first-swan-setup/</loc>
         <lastmod>2024-03-26</lastmod>
     </url>
@@ -35,9 +31,6 @@
     </url>
     <url>
         <loc>https://aabir-roy.github.io/categories/</loc>
-    </url>
-    <url>
-        <loc>https://aabir-roy.github.io/categories/one/</loc>
     </url>
     <url>
         <loc>https://aabir-roy.github.io/projects/</loc>
@@ -58,9 +51,6 @@
         <loc>https://aabir-roy.github.io/tags/linux/</loc>
     </url>
     <url>
-        <loc>https://aabir-roy.github.io/tags/one/</loc>
-    </url>
-    <url>
         <loc>https://aabir-roy.github.io/tags/radio-astronomy/</loc>
     </url>
     <url>
@@ -68,11 +58,5 @@
     </url>
     <url>
         <loc>https://aabir-roy.github.io/tags/rf/</loc>
-    </url>
-    <url>
-        <loc>https://aabir-roy.github.io/tags/three/</loc>
-    </url>
-    <url>
-        <loc>https://aabir-roy.github.io/tags/two/</loc>
     </url>
 </urlset>
