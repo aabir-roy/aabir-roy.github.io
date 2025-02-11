@@ -127,17 +127,11 @@ Finally save this as .config and exit. We can now go ahead and compile the kerne
 &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-unquoted z-heredoc z-shell&quot;&gt;
 &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-string z-unquoted z-heredoc z-shell&quot;&gt;&lt;span class=&quot;z-keyword z-control z-heredoc-token z-shell&quot;&gt;EOF&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;If there is a complaint about not finding a `cmdline.txt` file run the following to populate said file.
-&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;```bash
-&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;echo &amp;quot;console=serial0,115200 dwc_otg.lpm_enable=0 console=tty1 isolcpus=1-2 sched_rt_runtime=-1  root=LABEL=writable rootfstype=ext4 rootwait fixrtc quiet splash&amp;quot; &amp;gt;&amp;gt; &#x2F;boot&#x2F;cmdline.txt
-&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;```
-&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
-&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;```bash
-&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;echo &amp;quot;console=serial0,115200 dwc_otg.lpm_enable=0 console=tty1 isolcpus=1-2 sched_rt_runtime=-1  root=LABEL=writable rootfstype=ext4 rootwait fixrtc quiet splash&amp;quot; &amp;gt;&amp;gt; &#x2F;boot&#x2F;cmdline.txt
-&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;```
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;Now reboot.
-You should be able to check the kernel version by running &lt;code&gt;uname -r&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Now reboot.&lt;&#x2F;p&gt;
+&lt;p&gt;Check for the kernel using &lt;code&gt;uname&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; uname&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;a&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;Linux&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; a3cu9 6.6.35-rt34-rpi-v8+ &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;1 SMP PREEMPT_RT Tue Aug  6 04:29:19 PDT 2024 aarch64 aarch64 aarch64 GNU&#x2F;Linux&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;a class=&quot;zola-anchor&quot; href=&quot;#conclusion&quot; aria-label=&quot;Anchor link for: conclusion&quot; style=&quot;visibility: hidden;&quot;&gt;&lt;&#x2F;a&gt;
 &lt;&#x2F;h2&gt;
 &lt;p&gt;Hence, cross-compiling the Raspberry Pi Linux kernel with the PREEMPT_RT patch opens up a realm of possibilities for developers aiming to enhance real-time performance on their Raspberry Pi systems.&lt;&#x2F;p&gt;
