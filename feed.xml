@@ -4,8 +4,25 @@
 	<subtitle>This is a collection of articles related to digital electronics, embedded Linux and RF</subtitle>
 	<link href="https://aabir-roy.github.io/feed.xml" rel="self" type="application/atom+xml"/>
     <link href="https://aabir-roy.github.io"/>
-	<updated>2025-01-22T00:00:00+00:00</updated>
+	<updated>2025-03-22T00:00:00+00:00</updated>
 	<id>https://aabir-roy.github.io/feed.xml</id>
+	<entry xml:lang="en">
+		<title>Disabling &#x27;A start job is running for wait for network to be configured.&#x27;</title>
+		<published>2025-03-22T00:00:00+00:00</published>
+		<updated>2025-03-22T00:00:00+00:00</updated>
+		<link href="https://aabir-roy.github.io/blog/disable-wait-for-network/" type="text/html"/>
+		<id>https://aabir-roy.github.io/blog/disable-wait-for-network/</id>
+		<content type="html">&lt;p&gt;Raspberry Pi 4 running Ubuntu Server 22.04.5 LTS displays a &#x27;A start job is running for wait for network to be configured.&#x27; message when booting up. This can take up to 3 minutes slowing down other tasks.&lt;&#x2F;p&gt;
+&lt;p&gt;To stop this behaviour, use&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; systemctl disable systemd-networkd-wait-online.service&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;to disable the wait-online service to prevent the system from waiting on a network connection, and use&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; systemctl mask systemd-networkd-wait-online.service&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;to prevent the service from starting if requested by another service (the service is symlinked to &#x2F;dev&#x2F;null).&lt;&#x2F;p&gt;
+&lt;p&gt;Now your bootup should be almost instant.&lt;&#x2F;p&gt;
+</content>
+	</entry>
 	<entry xml:lang="en">
 		<title>Cross-compiling the Raspberry Pi Linux kernel with the PREEMPT_RT patch</title>
 		<published>2025-01-22T00:00:00+00:00</published>
