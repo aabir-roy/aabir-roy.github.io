@@ -26,6 +26,10 @@
         <lastmod>2023-10-11</lastmod>
     </url>
     <url>
+        <loc>https://aabir-roy.github.io/blog/remove-snaps-ubuntu/</loc>
+        <lastmod>2025-03-25</lastmod>
+    </url>
+    <url>
         <loc>https://aabir-roy.github.io/blog/setup-multiple-git-accounts/</loc>
         <lastmod>2023-10-20</lastmod>
     </url>
@@ -65,5 +69,8 @@
     </url>
     <url>
         <loc>https://aabir-roy.github.io/tags/til/</loc>
+    </url>
+    <url>
+        <loc>https://aabir-roy.github.io/tags/ubuntu/</loc>
     </url>
 </urlset>
